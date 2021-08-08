@@ -6,4 +6,8 @@
     <template if:false={displayDiv}>
       <div>False now</div>
     </template>
+
+    <template for:each={cityList} for:item="city">
+      <p key={city}>{city}</p>
+    </template>
 </template>
