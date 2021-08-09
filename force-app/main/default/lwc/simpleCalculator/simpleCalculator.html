@@ -26,7 +26,9 @@
             <ul>
               <template iterator:result={previousResults}>
                 <li key={result.value}>
+                  <div if:true={result.first} class="slds-border_top"></div>
                   <lightning-formatted-text value={result.value}></lightning-formatted-text>
+                  <div if:true={result.last} class="slds-border_bottom"></div>
                 </li>
               </template>
             </ul>
