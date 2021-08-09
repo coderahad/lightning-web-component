@@ -2,6 +2,7 @@ import { LightningElement, track } from 'lwc';
 
 export default class SimpleCalculator extends LightningElement {
   @track currentResult;
+  @track previousResults = [];
 
   firstNumber;
   secondNumber;
@@ -19,24 +20,28 @@ export default class SimpleCalculator extends LightningElement {
     const firstN = parseInt(this.firstNumber);
     const secondN = parseInt(this.secondNumber);
 
-    this.currentResult = `Result of ${this.firstNumber} + ${this.secondNumber} is ${firstN + secondN}`
+    this.currentResult = `Result of ${this.firstNumber} + ${this.secondNumber} is ${firstN + secondN}`;
+    this.previousResults.push(this.currentResult);
   }
   subHandler() {
     const firstN = parseInt(this.firstNumber);
     const secondN = parseInt(this.secondNumber);
 
-    this.currentResult = `Result of ${this.firstNumber} - ${this.secondNumber} is ${firstN - secondN}`
+    this.currentResult = `Result of ${this.firstNumber} - ${this.secondNumber} is ${firstN - secondN}`;
+    this.previousResults.push(this.currentResult);
   }
   multiplyHandler() {
     const firstN = parseInt(this.firstNumber);
     const secondN = parseInt(this.secondNumber);
 
-    this.currentResult = `Result of ${this.firstNumber} x ${this.secondNumber} is ${firstN * secondN}`
+    this.currentResult = `Result of ${this.firstNumber} x ${this.secondNumber} is ${firstN * secondN}`;
+    this.previousResults.push(this.currentResult);
   }
   divisionHandler() {
     const firstN = parseInt(this.firstNumber);
     const secondN = parseInt(this.secondNumber);
 
-    this.currentResult = `Result of ${this.firstNumber} / ${this.secondNumber} is ${firstN / secondN}`
+    this.currentResult = `Result of ${this.firstNumber} / ${this.secondNumber} is ${firstN / secondN}`;
+    this.previousResults.push(this.currentResult);
   }
 }
