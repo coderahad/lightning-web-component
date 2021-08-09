@@ -3,25 +3,30 @@ import { LightningElement, track } from 'lwc';
 export default class BmiCalculator extends LightningElement {
   cardTitle = "BMI Calculator";
 
-  @track bmiData = {
-    height: 0,
-    weight: 0,
-    result: 0
-  }
+  height;
+  weight;
 
+  bmi;
   onWeightChange(event) {
-    this.bmiData.weight = parseFloat(event.target.value);
+    this.weight = parseFloat(event.target.value);
   }
   
   onHeightChange(event) {
-    this.bmiData.height = parseFloat(event.target.value);
+    this.height = parseFloat(event.target.value);
   }
 
   calculateBMI() {
     try{
-      this.bmiData.result = this.bmiData.weight / (this.bmiData.height * this.bmiData.height);
+      this.bmi = this.weight / (this.height * this.height);
     } catch(error) {
-      this.bmiData.result = undefined;
+      this.bmi = undefined;
     }
+  }
+
+  get bmiValue() {
+    if(this.bmi === undefined) {
+      return "";
+    }
+    return `Your BMI is: ${Math.ceil(this.bmi)}`;
   }
 }
