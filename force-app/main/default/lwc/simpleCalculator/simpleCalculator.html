@@ -19,7 +19,7 @@
           <lightning-formatted-text value={currentResult}></lightning-formatted-text>
         </lightning-layout-item>
         <lightning-layout-item size="12" padding="around-medium"> 
-          <lightning-input type="checkbox" onchange={showPreviousResultToggle}></lightning-input>
+          <lightning-input type="checkbox" label="Show Previous Results" onchange={showPreviousResultToggle}></lightning-input>
         </lightning-layout-item>
         <lightning-layout-item size="12" padding="around-medium">
           <template if:true={showPreviousResults}>

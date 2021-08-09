@@ -45,4 +45,8 @@ export default class SimpleCalculator extends LightningElement {
     this.currentResult = `Result of ${this.firstNumber} / ${this.secondNumber} is ${firstN / secondN}`;
     this.previousResults.push(this.currentResult);
   }
+
+  showPreviousResultToggle(event) {
+    this.showPreviousResults = event.target.checked;
+  }
 }
