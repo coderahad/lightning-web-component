@@ -17,9 +17,7 @@ export default class PublicMethodChild extends LightningElement {
     });
 
     if(selectedCheckbox) {
-      this.value = selectedCheckbox;
-      console.log(selectedCheckbox);
-      console.log(this.value);
+      this.value = selectedCheckbox.value;
       return 'Successfully checked';
     }
     return 'No checkbox found';
