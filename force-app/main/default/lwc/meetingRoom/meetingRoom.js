@@ -8,9 +8,10 @@ export default class MeetingRoom extends LightningElement {
   tileClickedHandler() {
     // crate event with CustomEvent Constructor and input payload.
     // When using this event we need to prepend on: ontileclick.
-    const tileClicked = new CustomEvent('tileclick', {detail: this.meetingRoomInfo });
+    const tileClicked = new CustomEvent('tileclick', {detail: this.meetingRoomInfo, bubbles: true });
 
     //fire the event
     this.dispatchEvent(tileClicked);
   }
 }
+

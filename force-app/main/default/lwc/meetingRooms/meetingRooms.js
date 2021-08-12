@@ -20,4 +20,10 @@ export default class MeetingRooms extends LightningElement {
     this.selectedMeetingRoom = meetingRoomInfo.roomName;
   }
 
+  //In our case we create handler at the time of component creation.
+  constructor() {
+    super();
+    this.template.addEventListener('tileclick', this.onTileSelectHandler.bind(this));
+  }
 }
+
