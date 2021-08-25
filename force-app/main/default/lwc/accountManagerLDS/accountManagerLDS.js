@@ -11,17 +11,21 @@ export default class AccountManagerLDS extends LightningElement {
     }
 
     accountPhoneChangeHandler(event) {
-      this.accountName = event.target.value;
+      this.accountPhone = event.target.value;
     }
 
     accountWebsiteChangeHandler(event) {
-      this.accountName = event.target.value;
+      this.accountWebsite = event.target.value;
     }
 
     createAccount() {
       const fields = {'Name': this.accountName, 'Phone': this.accountPhone, 'Website': this.accountWebsite };
       const recordInput = { apiName: 'Account', fields };
 
-      createRecord(recordInput)
+      createRecord(recordInput).then(response => {
+        console.log('Account has been created: ', response.id );
+      }).catch(error => {
+        console.error('Error in creting account: ', error.body.message);
+      });
     }
 }
