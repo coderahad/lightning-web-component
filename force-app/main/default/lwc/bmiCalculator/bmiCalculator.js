@@ -1,4 +1,5 @@
 import { LightningElement, track } from 'lwc';
+import { getBMI } from 'c/bmi';
 
 export default class BmiCalculator extends LightningElement {
   cardTitle = "BMI Calculator";
@@ -16,11 +17,7 @@ export default class BmiCalculator extends LightningElement {
   }
 
   calculateBMI() {
-    try{
-      this.bmi = this.weight / (this.height * this.height);
-    } catch(error) {
-      this.bmi = undefined;
-    }
+    this.bmi = getBMI(this.weight, this.height);
   }
 
   get bmiValue() {
