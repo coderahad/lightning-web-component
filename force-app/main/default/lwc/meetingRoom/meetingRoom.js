@@ -1,4 +1,5 @@
 import { LightningElement, api } from 'lwc';
+import { fireEvent } from 'c/pubsub';
 
 export default class MeetingRoom extends LightningElement {
   @api meetingRoomInfo = {roomName: 'A-01', roomCapacity: '12'};
@@ -12,6 +13,7 @@ export default class MeetingRoom extends LightningElement {
 
     //fire the event
     this.dispatchEvent(tileClicked);
+    fireEvent();
   }
 }
 
