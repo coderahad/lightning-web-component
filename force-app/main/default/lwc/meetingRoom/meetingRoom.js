@@ -1,10 +1,13 @@
-import { LightningElement, api } from 'lwc';
+import { LightningElement, api, wire } from 'lwc';
 import { fireEvent } from 'c/pubsub';
+import { CurrentPageReference } from 'lightning/navigation';
 
 export default class MeetingRoom extends LightningElement {
   @api meetingRoomInfo = {roomName: 'A-01', roomCapacity: '12'};
 
   @api showRoomInfo = false;
+
+  @wire(CurrentPageReference) pageReference;
 
   tileClickedHandler() {
     // crate event with CustomEvent Constructor and input payload.
@@ -13,7 +16,9 @@ export default class MeetingRoom extends LightningElement {
 
     //fire the event
     this.dispatchEvent(tileClicked);
-    fireEvent();
+
+    fireEvent(this.pageReference, 'pubsubtileclick', this.meetingRoomInfo);
+
   }
 }
 
