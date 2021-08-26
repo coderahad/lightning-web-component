@@ -4,6 +4,6 @@ export default class AccountManagerLDSForms extends LightningElement {
     recordId;
 
     successHandler(event) {
-      this.recordId = event.detail.Id;
+      this.recordId = event.detail.id;
     }
 }
