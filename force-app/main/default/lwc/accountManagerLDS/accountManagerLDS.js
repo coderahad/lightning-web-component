@@ -35,4 +35,25 @@ export default class AccountManagerLDS extends LightningElement {
         console.error('Error in creting account: ', error.body.message);
       });
     }
+
+    get retAccountName(){
+      if(this.accountRecord.data){
+          return this.accountRecord.data.fields.Name.value;
+      }
+      return undefined;
+    }
+
+    get retAccountPhone(){
+      if(this.accountRecord.data){
+          return this.accountRecord.data.fields.Phone.value;
+      }
+      return undefined;
+    }
+
+    get retAccountWebsite(){
+      if(this.accountRecord.data){
+          return this.accountRecord.data.fields.Website.value;
+      }
+      return undefined;
+    }
 }
