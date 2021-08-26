@@ -1,5 +1,5 @@
-import { LightningElement } from 'lwc';
-import { createRecord } from 'lightning/uiRecordApi';
+import { LightningElement, wire } from 'lwc';
+import { createRecord, getRecord } from 'lightning/uiRecordApi';
 
 export default class AccountManagerLDS extends LightningElement {
     accountName;
