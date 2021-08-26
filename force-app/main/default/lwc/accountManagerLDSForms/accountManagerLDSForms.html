@@ -1,0 +1,27 @@
+<template>
+  <lightning-card title="Account Manager Via Forms">
+    <lightning-layout>
+      <lightning-layout-item size="6" padding="around-small">
+        <lightning-card title="Create A New Account">
+          <!-- object-api-name is api name of object of which record is going to create -->
+          <!-- onsuccess handles things after successful insert or edit, it can get recordId from server -->
+          <lightning-record-edit-form object-api-name="Account" onsuccess={successHandler}>
+            <!-- field-name is api name of field -->
+            <p><lightning-input-field field-name="Name"></lightning-input-field></p>
+            <p><lightning-input-field field-name="Phone"></lightning-input-field></p>
+            <p><lightning-input-field field-name="Website"></lightning-input-field></p>
+
+            <p>
+              <lightning-button type="submit" variant="brand" name="save" label="Create Account"></lightning-button>
+            </p>
+          </lightning-record-edit-form>
+        </lightning-card>
+      </lightning-layout-item>
+      <lightning-layout-item size="6" padding="around-small">
+        <lightning-card title="View Account Record">
+
+        </lightning-card>
+      </lightning-layout-item>
+    </lightning-layout>
+  </lightning-card>    
+</template>
