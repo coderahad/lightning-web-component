@@ -1,11 +1,15 @@
 import { LightningElement, wire } from 'lwc';
 import { createRecord, getRecord } from 'lightning/uiRecordApi';
 
+const fieldArray = ['Account.Name', 'Account.Phone', 'Account.Website'];
+
 export default class AccountManagerLDS extends LightningElement {
     accountName;
     accountPhone;
     accountWebsite;
-
+    
+    recordId;
+    
     accountNameChangeHandler(event) {
       this.accountName = event.target.value;
     }
@@ -24,6 +28,7 @@ export default class AccountManagerLDS extends LightningElement {
 
       createRecord(recordInput).then(response => {
         console.log('Account has been created: ', response.id );
+        this.recordId = response.id;
       }).catch(error => {
         console.error('Error in creting account: ', error.body.message);
       });
