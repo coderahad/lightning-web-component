@@ -10,6 +10,8 @@ export default class AccountManagerLDS extends LightningElement {
     
     recordId;
     
+    @wire(getRecord, {recordId: '$recordId', fields: fieldArray}) accountRecord;
+
     accountNameChangeHandler(event) {
       this.accountName = event.target.value;
     }
