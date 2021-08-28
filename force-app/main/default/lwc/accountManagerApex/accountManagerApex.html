@@ -1,8 +1,10 @@
 <template>
     <lightning-card title="All Accounts">
+      <lightning-input type="number" onchange={numOfAccountChangeHandler}></lightning-input>
+      <p><lightning-button label="Get Accounts" onclick={getAccounts}></lightning-button></p>
       <ul>
         <template if:true={responseReceived}>
-          <template for:each={accounts.data} for:item="account">
+          <template for:each={accounts} for:item="account">
             <li key={account.Id}>
               <div class="slds-p-around_medium lgc-bg">
                 <lightning-tile label={account.Name} type="media">
