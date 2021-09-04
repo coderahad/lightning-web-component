@@ -1,5 +1,25 @@
 <template>
     <lightning-card title="Navigation Example">
-        <lightning-button label="Open Google" onclick={openGoogle}></lightning-button>
+        <div class="slds-p-around_medium">
+            <lightning-button label="Open Google" onclick={openGoogle}></lightning-button>
+        </div>
+        <div class="slds-p-around_medium">
+            <lightning-button label="Account Home" onclick={openAccountHome}></lightning-button>
+        </div>
+        <div class="slds-p-around_medium">
+            <lightning-button label="Create New Contact" onclick={createNewContact}></lightning-button>
+        </div>
+        <div class="slds-p-around_medium">
+            <lightning-button label="Opportunity List View" onclick={openOppListView}></lightning-button>
+        </div>
+        <div class="slds-p-around_medium">
+            <lightning-button label="Open Case Record" onclick={openCaseRecord}></lightning-button>
+        </div>
+        <div class="slds-p-around_medium">
+            <lightning-button label="Meeting Room Tab" onclick={openMeetingRoom}></lightning-button>
+        </div>
+        <div class="slds-p-around_medium">
+            <lightning-button label="Preview a File" onclick={previewFile}></lightning-button>
+        </div>
     </lightning-card>
 </template>

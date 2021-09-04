@@ -10,4 +10,63 @@ export default class NavigationExample extends NavigationMixin(LightningElement)
       }
     });
   }
+  openAccountHome(){
+    this[NavigationMixin.Navigate]({
+      type: 'standard__objectPage',
+      attributes: {
+        objectApiName: 'Account',
+        actionName: 'home'
+      }
+    });
+  }
+  createNewContact(){
+    this[NavigationMixin.Navigate]({
+      type: 'standard__objectPage',
+      attributes: {
+        objectApiName: 'Contact',
+        actionName: 'new'
+      }
+    });
+  }
+  openOppListView(){
+    this[NavigationMixin.Navigate]({
+      type: 'standard__objectPage',
+      attributes: {
+        objectApiName: 'Opportunity',
+        actionName: 'list'
+      }
+    });
+  }
+  openCaseRecord(){
+    this[NavigationMixin.Navigate]({
+      type: 'standard__recordPage',
+      attributes: {
+        recordId: '5001y0000034lT8AAI',
+        objectApiName: 'Case',
+        actionName: 'view'
+      }
+    });
+  }
+  openMeetingRoom(){
+    this[NavigationMixin.Navigate]({
+      type: 'standard__navItemPage',
+      attributes: {
+        apiName: 'Meeting_Room'
+      }
+    });
+  }
+  /*
+  previewFile(){
+    this[NavigationMixin.Navigate]({
+      type: 'standard__namedPage',
+      attributes: {
+        pageName: 'filePreview'
+      },
+      state: {
+        recordId: '',
+        selectedRecordId: ''
+      }
+    });
+  }
+  */
 }
