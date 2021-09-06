@@ -4,15 +4,17 @@ import SL from '@salesforce/resourceUrl/simplelightbox';
 import { loadStyle, loadScript } from 'lightning/platformResourceLoader';
 
 export default class SimpleLightBoxExample extends LightningElement {
-
+    slLoaded = false;
     renderedCallback(){
-      Promise.all([
-        loadStyle(this, `${SL}/simpleLightbox-master/dist/simpleLightbox.css`),
-        loadScript(this, `${SL}/simpleLightbox-master/dist/simpleLightbox.js`)
-      ]).then(()=>{
-
-      }).catch((error) =>{
-        console.error('Could not initialize light box -', error)
-      })
+      if(!this.slLoaded){
+        Promise.all([
+          loadStyle(this, `${SL}/simpleLightbox-master/dist/simpleLightbox.css`),
+          loadScript(this, `${SL}/simpleLightbox-master/dist/simpleLightbox.js`)
+        ]).then(()=>{
+          this.slLoaded = true;
+        }).catch((error) =>{
+          console.error('Could not initialize light box -', error)
+        });
+      }
     }
 }
