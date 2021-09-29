@@ -9,5 +9,9 @@
             {roomName: 'B-03', roomCapacity: '15'},
             {roomName: 'C-01', roomCapacity: '20'},
           ]);
+    },
+    handleTileClick: function(component, event, helper) {
+        // In aura event.getParam(parameter-name) in LWC event.details.property-name
+        component.set("v.selectedMeetingRoom", event.getParam("roomName"));
     }
 })
