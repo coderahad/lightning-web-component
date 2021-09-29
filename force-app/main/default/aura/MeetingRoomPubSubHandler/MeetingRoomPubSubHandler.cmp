@@ -1,0 +1,9 @@
+<aura:component>
+  <aura:attribute name="selectedMeetingRoom" type="Object"/>
+  <lightning:card title="Aura Pub Sub Handler">
+    You have selected meeting room: {!v.selectedMeetingRoom.roomName}
+    <p>
+      Room capacity: {!v.selectedMeetingRoom.roomCapacity}
+    </p>
+  </lightning:card>
+</aura:component>	
