@@ -16,6 +16,7 @@ describe("c-meetingRooms", ()=>{
     // Because this is shadow DOM. shadowRoot is used.
     const allMeetingRoomComponents = meetingRooms.shadowRoot.querySelectorAll("c-meeting-room");
 
+    debugger;
     // This is system.assert() in js test file.
     expect(allMeetingRoomComponents.length).toBe(7);
   });
@@ -25,6 +26,8 @@ describe("c-meetingRooms", ()=>{
     document.body.appendChild(meetingRooms);
 
     const lightningCard = meetingRooms.shadowRoot.querySelector("lightning-card");
+
+    debugger;
     expect(lightningCard.title).toBe("Meeing Rooms")
   })  
 });
