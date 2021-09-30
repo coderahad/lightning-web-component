@@ -5,5 +5,7 @@ describe("c-meetingRooms", ()=>{
   
   it("count of meeting room should be 7", () => {
     const meetingRooms = createElement("c-meetingRooms", {is:MeetingRooms});
+
+    document.body.appendChild(meetingRooms);
   })
 });
