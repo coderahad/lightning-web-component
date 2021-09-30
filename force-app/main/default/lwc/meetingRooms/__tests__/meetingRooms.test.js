@@ -2,7 +2,12 @@ import {createElement} from "lwc";
 import MeetingRooms from "c/meetingRooms";
 
 describe("c-meetingRooms", ()=>{
-  
+  afterEach(()=>{
+    while(document.body.firstChild) {
+      document.body.removeChild(document.body.firstChild);
+    }
+  });
+
   it("count of meeting room should be 7", () => {
     const meetingRooms = createElement("c-meetingRooms", {is:MeetingRooms});
 
@@ -13,5 +18,13 @@ describe("c-meetingRooms", ()=>{
 
     // This is system.assert() in js test file.
     expect(allMeetingRoomComponents.length).toBe(7);
-  })
+  });
+
+  it("title should be Meeting Rooms", ()=>{
+    const meetingRooms = createElement("c-meetingRooms", {is:MeetingRooms});
+    document.body.appendChild(meetingRooms);
+
+    const lightningCard = meetingRooms.shadowRoot.querySelector("lightning-card");
+    expect(lightningCard.title).toBe("Meeing Rooms")
+  })  
 });
