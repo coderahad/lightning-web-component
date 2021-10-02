@@ -1,5 +1,6 @@
 import { LightningElement, wire } from 'lwc';
 import getCarTypes from '@salesforce/apex/CarSearchFormController.getCarTypes';
+import { ShowToastEvent } from 'lightning/platformShowToastEvent';
 
 export default class CarSearchForm extends LightningElement {
   carTypes;
@@ -14,6 +15,8 @@ export default class CarSearchForm extends LightningElement {
         carType.value = element.id;
         this.carTypes.push(carType);
       })
+    } else if(error) {
+      this.ShowToast('Error', error.body.message, 'error');
     }
   }
   
@@ -23,6 +26,15 @@ export default class CarSearchForm extends LightningElement {
 
   createNewCarType() {
     
+  }
+  ShowToast(title, message, variant) {
+    const evt = ShowToastEvent({
+      title: title,
+      message: message,
+      variant: variant,
+    });
+
+    this.dispatchEvent(evt);
   }
 
 } 
