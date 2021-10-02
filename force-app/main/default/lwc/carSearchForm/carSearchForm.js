@@ -1,8 +1,9 @@
 import { LightningElement, wire } from 'lwc';
 import getCarTypes from '@salesforce/apex/CarSearchFormController.getCarTypes';
 import { ShowToastEvent } from 'lightning/platformShowToastEvent';
+import { NavigationMixin } from 'lightning/navigation';
 
-export default class CarSearchForm extends LightningElement {
+export default class CarSearchForm extends NavigationMixin(LightningElement) {
   carTypes;
 
   @wire(getCarTypes) 
@@ -29,7 +30,13 @@ export default class CarSearchForm extends LightningElement {
   }
 
   createNewCarType() {
-    
+    this[NavigationMixin.Navigate]({
+      type: 'standard__objectPage',
+      attibutes: {
+        obectApiName: 'Car_Type__c',
+        actionName: 'new'
+      }
+    })
   }
   ShowToast(title, message, variant) {
     const evt = ShowToastEvent({
