@@ -21,7 +21,11 @@ export default class CarSearchForm extends LightningElement {
   }
   
   handleCarTypeChange(event) {
+    const carTypeId = event.detail.value;
 
+    const carTypeSelectionChangeEvent = new CustomEvent('cartypeselect', {detail: 'carTypeId'});
+
+    this.dispatchEvent(carTypeSelectionChangeEvent);
   }
 
   createNewCarType() {
