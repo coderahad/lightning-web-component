@@ -13,18 +13,18 @@ export default class CarSearchForm extends NavigationMixin(LightningElement) {
       data.forEach(element => {
         const carType = {};
         carType.label = element.Name;
-        carType.value = element.id;
+        carType.value = element.Id;
         this.carTypes.push(carType);
       })
     } else if(error) {
-      this.ShowToast('Error', error.body.message, 'error');
+      this.ShowToast('ERROR', error.body.message, 'error');
     }
   }
   
   handleCarTypeChange(event) {
     const carTypeId = event.detail.value;
 
-    const carTypeSelectionChangeEvent = new CustomEvent('cartypeselect', {detail: 'carTypeId'});
+    const carTypeSelectionChangeEvent = new CustomEvent('cartypeselect', {detail: carTypeId});
 
     this.dispatchEvent(carTypeSelectionChangeEvent);
   }
