@@ -22,4 +22,11 @@ export default class CarSearchResult extends LightningElement {
 
     this.dispatchEvent(evt);
   }
+
+  getCarsFound() {
+    if(this.cars){
+      return true;
+    }
+    return false;
+  }
 }
