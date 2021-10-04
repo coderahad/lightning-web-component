@@ -39,7 +39,7 @@ export default class CarSearchForm extends NavigationMixin(LightningElement) {
     })
   }
   ShowToast(title, message, variant) {
-    const evt = ShowToastEvent({
+    const evt = new ShowToastEvent({
       title: title,
       message: message,
       variant: variant,

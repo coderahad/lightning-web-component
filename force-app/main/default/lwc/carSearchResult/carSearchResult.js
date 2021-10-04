@@ -5,8 +5,8 @@ import { ShowToastEvent } from 'lightning/platformShowToastEvent';
 export default class CarSearchResult extends LightningElement {
   @api carTypeId;
   cars;
-
-  @wire(getCars, {carTypeId : this.carTypeId}) wiredCars({data, error}) {
+    // with $, wire adaptor become reactive. without $, it is static
+  @wire(getCars, {carTypeId : '$carTypeId'}) wiredCars({data, error}) {
     if(data) {
       this.cars = data;
     } else if(error) {
@@ -22,8 +22,8 @@ export default class CarSearchResult extends LightningElement {
 
     this.dispatchEvent(evt);
   }
-
-  getCarsFound() {
+  // Here getCarsFound() was the bug. I followed the aura cmp getter method convention and component return 'No cars found'. 
+  get carsFound() {
     if(this.cars){
       return true;
     }
