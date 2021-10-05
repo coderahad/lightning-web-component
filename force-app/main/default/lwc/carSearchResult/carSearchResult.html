@@ -3,7 +3,7 @@
       <template if:true={carsFound}>
         <template for:each={cars} for:item="car">
           <lightning-layout-item key={car.id} padding="around-small" size="12" small-device-size="6" large-device-size="6" medium-device-size="6" >
-            {car.Name}
+            <c-car-tile car={car}></c-car-tile>
           </lightning-layout-item>     
         </template>
       </template>
