@@ -22,6 +22,10 @@ export default class CarSearchResult extends LightningElement {
 
     this.dispatchEvent(evt);
   }
+  carSelectHandler(event){
+    const carId = event.detail;
+  }
+
   // Here getCarsFound() was the bug. I followed the aura cmp getter method convention and component return 'No cars found'. 
   get carsFound() {
     if(this.cars){
