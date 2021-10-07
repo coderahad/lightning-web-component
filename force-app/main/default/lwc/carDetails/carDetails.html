@@ -4,7 +4,7 @@
           <lightning-layout-item size="12">
               <lightning-tabset active-tab-value={selectedTabValue}>
                   <lightning-tab label="Car Details" value="cardetailstab" onactive={tabChangeHandler}>
-
+                      <c-car-detail car={car}></c-car-detail>
                   </lightning-tab>
                   <lightning-tab label="Add Car Experience" value="addexperience" onactive={tabChangeHandler}>
 
