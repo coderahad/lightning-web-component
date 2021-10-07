@@ -1,5 +1,7 @@
 import { LightningElement, wire } from 'lwc';
 import { getRecord} from 'lightning/uiRecordApi';
+import { registerListener, unregisterAllListeners } from 'c/pubsub';
+import { CurrentPageReference } from 'ligtning/navigation';
 
 import CAR_ID from '@salesforce/schema/Car__c.Id';
 import CAR_NAME from '@salesforce/schema/Car__c.Name';
@@ -30,10 +32,23 @@ export default class CarDetails extends LightningElement {
     carId;
     selectedTabValue;
     
+    @wire(CurrentPageReference) pageRef;
+
     @wire(getRecord , {recordId: '$carId', fields})
     car;
 
-    
+   connectedCallback(){
+        registerListener('carselect', this.callbackMethod, this);
+    }
+
+    callbackMethod(){
+        this.carId = payload;
+    }
+
+    disconnectedCallback() {
+        unregisterAllListeners(this);
+    }
+
     tabChangeHandler(event){
         this.selectedTabValue = event.target.value;
     }
