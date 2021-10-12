@@ -21,7 +21,7 @@ export default class CarExperiences extends NavigationMixin(LightningElement) {
     }
 
     userClickHandler(event){
-        const userId = event.target.getAttribute('data-userid');
+        const userId = event.target.getAttribute('data--userid');
         this[NavigationMixin.Navigate]({
             type: "standard__recordPage",
             attributes: {
