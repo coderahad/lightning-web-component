@@ -1,8 +1,9 @@
 import { LightningElement, api } from 'lwc';
 import getExperiences from '@salesforce/apex/CarExperience.getExperiences';
 import { ShowToastEvent } from 'lightning/platformShowToastEvent';
+import { NavigationMixin } from 'lightning/navigation';
 
-export default class CarExperiences extends LightningElement {
+export default class CarExperiences extends NavigationMixin(LightningElement) {
  
     @api carId;
     carExperience;
@@ -16,6 +17,18 @@ export default class CarExperiences extends LightningElement {
             this.carExperience = experiences;
         }).catch((error)=> {
             this.showToast('ERROR', error.body.message, 'error');
+        })
+    }
+
+    userClickHandler(event){
+        const userId = event.target.getAttribute('data-userid');
+        this[NavigationMixin.Navigate]({
+            type: "standard__recordPage",
+            attributes: {
+              recordId: userId,
+              objectApiName: "User",
+              actionName: "view"
+            }
         })
     }
 
