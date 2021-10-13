@@ -6,7 +6,7 @@ import { NavigationMixin } from 'lightning/navigation';
 export default class CarExperiences extends NavigationMixin(LightningElement) {
 
     privateCarId;
-    carExperiences;
+    carExperiences = [];
 
     connectedCallback(){
         this.getCarExperiences();
@@ -52,7 +52,7 @@ export default class CarExperiences extends NavigationMixin(LightningElement) {
     }
 
     get hasExperiences(){
-        if(this.carExperiences){
+        if(this.carExperiences.length > 0){
             return true;
         }
         return false;
