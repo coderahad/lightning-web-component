@@ -5,15 +5,25 @@ import { NavigationMixin } from 'lightning/navigation';
 
 export default class CarExperiences extends NavigationMixin(LightningElement) {
 
-    @api carId;
+    privateCarId;
     carExperiences;
 
     connectedCallback(){
         this.getCarExperiences();
     }
 
+    @api
+    get carId(){
+        return this.privateCarId;
+    }
+
+    set carId(value){
+        this.privateCarId = value;
+        this.getCarExperiences();
+    }
+
     getCarExperiences(){
-        getExperiences({carId : this.carId}).then( (experiences) =>{
+        getExperiences({carId : this.privateCarId}).then( (experiences) =>{
             this.carExperiences = experiences;
         }).catch((error) =>{
             this.showToast('ERROR', error.body.message, 'error');
