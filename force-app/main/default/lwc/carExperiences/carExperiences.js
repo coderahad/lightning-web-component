@@ -21,7 +21,8 @@ export default class CarExperiences extends NavigationMixin(LightningElement) {
         this.privateCarId = value;
         this.getCarExperiences();
     }
-
+    // We can not make a call to this getCarExperience from parent untill this method is public.
+    @api
     getCarExperiences(){
         getExperiences({carId : this.privateCarId}).then( (experiences) =>{
             this.carExperiences = experiences;
