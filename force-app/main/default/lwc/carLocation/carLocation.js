@@ -11,6 +11,7 @@ export default class CarLocation extends LightningElement {
     @wire(CurrentPageReference) pageRef;
 
     leafletLoaded = false;
+    leafletMap;
 
     connectedCallback(){
         registerListener('carselect', this.fetchCarDetails, this)
@@ -33,8 +34,14 @@ export default class CarLocation extends LightningElement {
         }
     }
 
-    fetchCarDetails(car){
+    fetchCarDetails(payload){
+        this.car = payload;
 
+        if(this.leafletLoaded){
+            if(!this.leafletMap){
+
+            }
+        }
     }
 
     showToast(title, message, variant) {
@@ -44,6 +51,13 @@ export default class CarLocation extends LightningElement {
             variant: variant,
         });
         this.dispatchEvent(evt);
+    }
+
+    get hasCar(){
+        if(this.car){
+            return 'slds-is-expanded';
+        }
+        return 'slds-is-collapsed';
     }
 
 }
