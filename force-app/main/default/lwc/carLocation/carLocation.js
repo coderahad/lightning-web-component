@@ -38,6 +38,7 @@ export default class CarLocation extends LightningElement {
         this.car = payload;
 
         if(this.leafletLoaded){
+            // If the leaflet map has not been initialized then initialize the map first and then do the further processing of adding the tile layer and the marker to it.
             if(!this.leafletMap){
                 const map = this.template.querySelector('.map');
                 if(map){
@@ -45,6 +46,14 @@ export default class CarLocation extends LightningElement {
                     L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Street_Map/MapServer/tile/{z}/{y}/{x}', {attribution: 'Tiles for Rent A Car'}).addTo(this.leafletMap);
                 }
             }
+            if(this.car){
+                const location = [this.car.Geolocation__Latitude__s, this.car.Geolocation__Longitude__s];
+
+                const leafletMarker = L.marker(location);
+                leafletMarker.addTo(this.leafletMap);
+                this.leafletMap.setView(location);
+            }
+            
         }
     }
 
