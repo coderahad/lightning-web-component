@@ -39,7 +39,11 @@ export default class CarLocation extends LightningElement {
 
         if(this.leafletLoaded){
             if(!this.leafletMap){
-
+                const map = this.template.querySelector('.map');
+                if(map){
+                    this.leafletMap = L.map(map, {zoomControl: true}).setView([42.356045, -71.085650], 13);
+                    L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Street_Map/MapServer/tile/{z}/{y}/{x}', {attribution: 'Tiles for Rent A Car'}).addTo(this.leafletMap);
+                }
             }
         }
     }
