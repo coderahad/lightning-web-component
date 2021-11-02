@@ -2,6 +2,11 @@
     <lightning-card title="Message Channel LWC">
         <div class="slds-p-around_medium">
           <!-- iterate over the list -->
+          <template for:each={messages} for:item="message">
+                <div key={message.id} class="message">
+                    {message.from} > {message.value}
+                </div>
+          </template>
         </div>
           <div class="slds-p-around_medium">
             <lightning-layout>
