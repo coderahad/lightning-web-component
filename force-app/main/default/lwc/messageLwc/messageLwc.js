@@ -1,5 +1,6 @@
-import TickerSymbol from '@salesforce/schema/Account.TickerSymbol';
 import { LightningElement, track } from 'lwc';
+import messageDemo from "@salesforce/messageChannel/messageDemo__c";
+import { APPLICATION_SCOPE, createMessageContext, MessageContext, publish, releaseMessageContext, subscribe, unsubscribe } from "lightning/messageService";
 
 export default class MessageLwc extends LightningElement {
     @track messages = []; // for arrray and object we need to use track decorator to track.
