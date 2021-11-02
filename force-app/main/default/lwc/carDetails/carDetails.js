@@ -42,7 +42,7 @@ export default class CarDetails extends LightningElement {
     }
 
     callBackMethod(payload){
-        this.carId = payload;
+        this.carId = payload.Id;
     }
 
     disconnectedCallback(){
@@ -51,6 +51,14 @@ export default class CarDetails extends LightningElement {
 
     tabChangeHandler(event){
         this.selectedTabValue = event.target.value;
+    }
+
+    experienceAddedHandler(){
+        const carExperienceComponent = this.template.querySelector('c-car-experiences');
+        if(carExperienceComponent){
+            carExperienceComponent.getCarExperiences();
+            this.selectedTabValue = 'viewexperience';
+        }
     }
 
     get carFound(){
