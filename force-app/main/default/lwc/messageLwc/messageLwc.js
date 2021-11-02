@@ -1,10 +1,11 @@
-import { LightningElement, track } from 'lwc';
+import { LightningElement, track, wire } from 'lwc';
 import messageDemo from "@salesforce/messageChannel/messageDemo__c";
-import { APPLICATION_SCOPE, createMessageContext, MessageContext, publish, releaseMessageContext, subscribe, unsubscribe } from "lightning/messageService";
+import { MessageContext, publish } from "lightning/messageService";
 
 export default class MessageLwc extends LightningElement {
     @track messages = []; // for arrray and object we need to use track decorator to track.
 
+    @wire(MessageContext) msgContext;
     sendHandler() {
         const inputElement = this.template.querySelector("lightning-input");
         if (inputElement) {
@@ -15,6 +16,11 @@ export default class MessageLwc extends LightningElement {
                 from: "LWC"
             });
             // publish message
+            const messagePayload = {
+                message: msg
+            }
+
+            publish(this.msgContext, messageDemo, messagePayload);
             // after publishing input element become empty
             inputElement.value = "";
         }
