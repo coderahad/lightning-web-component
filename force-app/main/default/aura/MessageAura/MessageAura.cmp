@@ -1,6 +1,10 @@
 <aura:component implements="flexipage:availableForAllPageTypes">
     <aura:attribute name="messages" type="List" />
 
+<<<<<<< HEAD
+=======
+        <!-- <lightning:messageChannel type="messageDemo__c" onMessage="{!c.messageHandler}" scope="APPLICATION"></lightning:messageChannel> -->
+>>>>>>> 18fd85594143566b7f88583066d2cfc1196711d6
 
         <lightning:card title="Message Channel Aura">
           <div class="slds-p-around_medium">
