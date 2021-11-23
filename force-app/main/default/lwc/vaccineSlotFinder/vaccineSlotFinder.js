@@ -26,7 +26,8 @@ export default class VaccineSlotFinder extends LightningElement {
         const centers = new Map();
 
         for(const center of data) {
-            centers.set(center.center_id, {name: center.name})
+            // if the center id is already exist it will not add new center id
+            !centers.has(center.center_id) && centers.set(center.center_id, {name: center.name});
 
             for(const session of center.sessions) {
                 // destructuring syntax
@@ -34,14 +35,17 @@ export default class VaccineSlotFinder extends LightningElement {
 
                 // add date as column in dates map
                 dates.set(date, {label: date, fieldName: date, type: "text"});
+                // add column value for the row. these variable values are coming from above destructuring
+                // Suppose, the object we get from it is {name: 'Jamie'} the below line will make it {name: 'jamie', date: 'Avail Cap 2 Min Age: 18'}
+                // Since the date is a string we can use [date] as property
+                centers.get(center.center_id)[date] = `Available Capacity: ${available_capacity} Min Age: ${min_age_limit}`;
             }
         }
-
-        console.log(dates);
-        console.log(centers);
+        this.dates = Array.from(dates.values());
+        this.centers = Array.from(centers.values());
     }
 
     get hideMessage(){
-        return false;
+        return this.centers.length > 0;
     }
 }
