@@ -20,7 +20,8 @@ export default class VaccineSlotFinder extends LightningElement {
         // build columns/dates
         const dates = new Map();
         // as a key to this map we add name. 'name' also the very first column's fieldName.
-        dates.set("name", {label: "Center Name", fieldName: "name", type: "text"});
+        // wrap the data to the column if not enough width.
+        dates.set("name", {label: "Center Name", fieldName: "name", type: "text", wrapText: true });  
 
         // build rows/centers
         const centers = new Map();
@@ -34,11 +35,16 @@ export default class VaccineSlotFinder extends LightningElement {
                 const { date, available_capacity, min_age_limit } = session;
 
                 // add date as column in dates map
-                dates.set(date, {label: date, fieldName: date, type: "text"});
+                // adding style. name the field className
+                dates.set(date, {label: date, fieldName: date, type: "text", wrapText: true, cellAttributes:{ class: { fieldName: "className" } } });
                 // add column value for the row. these variable values are coming from above destructuring
                 // Suppose, the object we get from it is {name: 'Jamie'} the below line will make it {name: 'jamie', date: 'Avail Cap 2 Min Age: 18'}
                 // Since the date is a string we can use [date] as property
                 centers.get(center.center_id)[date] = `Available Capacity: ${available_capacity} Min Age: ${min_age_limit}`;
+                // lets add className property to every row
+                centers.get(center.center_id).className = available_capacity > 0 ? "slds-text-color_success" : "slds-text-color_error";
+                // we can also use this
+                // centers.get(center.center_id)["className"]
             }
         }
         this.dates = Array.from(dates.values());
