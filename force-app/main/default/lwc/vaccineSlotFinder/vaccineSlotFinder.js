@@ -10,7 +10,8 @@ export default class VaccineSlotFinder extends LightningElement {
         if (pinCode.length === 6 && isEnterKey) {
           const today = new Date();
           const formattedDate = `${today.getDate()}-${today.getMonth() + 1}-${today.getFullYear()}`;
-          const endpoint = `https://cdn-api.co-vin.in/api/v2/appointment/sessions/public/calendarByPin?pincode=${pinCode}&date=${formattedDate}`;
+        //   const endpoint = `https://cdn-api.co-vin.in/api/v2/appointment/sessions/public/calendarByPin?pincode=${pinCode}&date=${formattedDate}`;
+          const endpoint = `https://choudharymanish8585.github.io/cowin-api-sample-response/db.json`;
           this.fetchVaccineSlots(endpoint);
         }
     }
